@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+    <p>
+    <h1>แก้ไขข้อมูลการรับงาน</h1>
+    <form method="POST" enctype="multipart/form-data" class="form form-control text-primary">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <p class="text-center">
+            <a type="button" class="btn btn-lg btn-secondary" onclick="history.back()">
+                 <i class="fa fa-rotate-back"></i> กลับ
+            </a>
+
+            <button type="submit" class="btn btn-lg btn-success">
+                 <i class="fa-solid fa-tools"></i> บันทึก
+            </button>
+        </p>
+    </form>
+{% endblock %}

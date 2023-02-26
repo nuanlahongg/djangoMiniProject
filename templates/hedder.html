@@ -1,0 +1,21 @@
+{% load static %}
+
+ <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">ระบบบริหารจัดการร้านซ่อมรถ</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+     <ul class="nav justify-content-end">
+
+        <li class="nav-item text-white">
+             UserName : {{ request.session.userName }}
+            &nbsp;
+             Status : {{ request.session.userStatus }}
+        </li>
+
+      </ul>
+    </div>
+
+</nav>

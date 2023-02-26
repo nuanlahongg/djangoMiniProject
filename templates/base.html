@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ระบบบริหารจัดการร้านซ่อมรถ</title>
+    <link type="text/css" rel="stylesheet" href="{% static 'stylesheets/bt523/css/bootstrap.css' %}">
+    <script src="{% static 'stylesheets/bt523/js/bootstrap.js' %}"></script>
+
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row" >
+
+            {% include 'hedder.html' %}
+
+    </div>
+    <div class="row " style="background-color: #b6d4fe;height:95vh">
+        <div class="col-lg-2 bg-dark text-white shadow-offset-left-md">
+            {% include 'memu.html' %}
+        </div>
+        <div class="col-lg-10 bg-light text-primary">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

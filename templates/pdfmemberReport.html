@@ -1,0 +1,49 @@
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="{% static 'stylesheets/bt502/css/bootstrap.css' %}">
+    <script src="{% static 'stylesheets/bt502/js/bootstrap.bundle.js'%}"></script>
+    <script type="text/javascript" src="{% static 'stylesheets/layout/scripts/jquery.min.js'%}"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <title>ข้อมูลช่าง</title>
+</head>
+<body>
+ <h1 align="center">
+        <b style="font-size:25px;font-weight: bold">
+            ร้านรอนานการช่าง
+        </b>
+    </h1>
+    <h1 align="center">
+        <b style="font-size:25px;font-weight: bold">
+            ข้อมูลช่างของช่างทั้งหมด
+        </b>
+    </h1>
+
+
+        <table width="90%" border="0" align="center">
+              <tr class="bg-white text-primary text-center">
+            <th class="col col-1">Member ID </th>
+            <th class="col col-1">Name </th>
+            <th class="col col-1">Birthdate </th>
+            <th class="col col-2">Address </th>
+            <th class="col col-1">Telephone </th>
+            <th class="col col-1">Password </th>
+
+        </tr>
+            {% for member in member %}
+        <tr>
+            <td class="text-center">{{ member.mid }}</td>
+            <td class="text-center">{{ member.name }}</td>
+            <td class="text-center">{{ member.birthdate }}</td>
+            <td class="text-center">{{ member.address }}</td>
+            <td class="text-center">{{ member.tel }}</td>
+            <td class="text-center">{{ member.password }}</td>
+
+
+        </tr>
+    {% endfor %}
+        </table>
+</body>
+</html>

@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <p>
+
+<div class="row">
+    <div class="col-sm-4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor"
+                             class="bi bi-wrench-adjustable" viewBox="0 0 16 16">
+                            <path d="M16 4.5a4.492 4.492 0 0 1-1.703 3.526L13 5l2.959-1.11c.027.2.041.403.041.61Z"/>
+                            <path d="M11.5 9c.653 0 1.273-.139 1.833-.39L12 5.5 11 3l3.826-1.53A4.5 4.5 0 0 0 7.29 6.092l-6.116 5.096a2.583 2.583 0 1 0 3.638 3.638L9.908 8.71A4.49 4.49 0 0 0 11.5 9Zm-1.292-4.361-.596.893.809-.27a.25.25 0 0 1 .287.377l-.596.893.809-.27.158.475-1.5.5a.25.25 0 0 1-.287-.376l.596-.893-.809.27a.25.25 0 0 1-.287-.377l.596-.893-.809.27-.158-.475 1.5-.5a.25.25 0 0 1 .287.376ZM3 14a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"/>
+                        </svg>&nbsp;
+        <span class="ml-2 h1">ข้อมูลอะไหล่</span>
+    </div>
+    <div class="col-sm-8" align="right">
+
+        <a href="{% url 'spare_partNew' %}" class="btn  btn-success "><i class="fa fa-plus"></i> เพิ่มข้อมูลอะไหล่ </a>
+    </div>
+</div>
+<p>
+    <table class="table table-primary table-striped">
+        <tr class="bg-white text-primary text-center">
+            <th class="col col-1">รหัสอะไหล่ </th>
+            <th class="col col-1">ชื่อ </th>
+            <th class="col col-1">ราคา </th>
+            <th class="col col-1">จำนวน </th>
+            <th class="col col-2">รูป </th>
+            <th class="col col-1">จัดการข้อมูล </th>
+        </tr>
+
+    {% for spare_part in spare_part %}
+        <tr>
+            <td class="text-center">{{ spare_part.spid }}</td>
+            <td class="text-center">{{ spare_part.name }}</td>
+            <td class="text-center">{{ spare_part.price | floatformat:2}}</td>
+            <td class="text-center">{{ spare_part.net }}</td>
+            <td class="text-center"><img src= {% static spare_part.picture%} width="120px" height="100px" class="img img-thumbnail"></td>
+            <td class="text-lg-center">
+                <a href="{% url 'spare_partUpdate' spare_part.spid %}" class="btn btn-warning text-white">แก้ไข</a>
+                <a href="{% url 'spare_partDelete' spare_part.spid %}" class="btn btn-danger">ลบ</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </table>
+
+
+
+    <br><br><br>
+{% endblock %}

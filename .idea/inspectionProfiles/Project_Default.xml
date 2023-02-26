@@ -1,0 +1,34 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="MySQLdb" />
+          <option value="django.forms.forms.ModelsForms" />
+          <option value="ProfileApp.models.member" />
+          <option value="ProfileApp.models.forms" />
+          <option value="ProfileApp.models.Customer" />
+          <option value="djangoMiniProject.urls.include" />
+          <option value="ProfileApp.models.GoodsCategory" />
+          <option value="ProfileApp.view.Confirms" />
+          <option value="ProfileApp.view.Accepts" />
+          <option value="ProfileApp.view.Send" />
+          <option value="ProfileApp.models.Confirms" />
+          <option value="ProfileApp.models.Accepts" />
+          <option value="ProfileApp.models.Send" />
+          <option value="ProfileApp.forms.Members" />
+          <option value="ProfileApp.view.adminsForm" />
+          <option value="ProfileApp.view.admins" />
+          <option value="ProfileApp.view.members" />
+          <option value="ProfileApp.admin.members" />
+          <option value="ProfileApp.view.AdminForm" />
+          <option value="ProfileApp.view.MembersForm" />
+          <option value="ProfileApp.view.ChangePasswordForm" />
+          <option value="ProfileApp.view.ResetPasswordForm" />
+          <option value="ProfileApp.view.membersForm" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>

@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <p>
+
+<div class="row">
+    <div class="col-sm-4">
+         <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor"
+                             class="bi bi-clipboard" viewBox="0 0 16 16">
+                            <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                            <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+                        </svg>
+        <span class="ml-2 h1">ข้อมูลการรับงาน</span>
+    </div>
+    <div class="col-sm-8" align="right">
+        <a href="{% url 'getjopNew' %}" class="btn  btn-success "><i class="fa fa-plus"></i> เพิ่มข้อมูลการรับงาน</ม> </a>
+    </div>
+</div>
+<p>
+    <table class="table table-primary table-striped">
+        <tr class="bg-white text-primary text-center">
+            <th class="col col-1">รหัสการรับงาน</th>
+            <th class="col col-3">รายละเอียด</th>
+            <th class="col col-1">วันที่ </th>
+            <th class="col col-1">ชื่อผู้จ้าง </th>
+            <th class="col col-1">จัดการข้อมูล </th>
+        </tr>
+
+    {% for getjop in getjop %}
+        <tr>
+            <td class="text-center">{{ getjop.gid }}</td>
+            <td class="text-center">{{ getjop.details }}</td>
+            <td class="text-center">{{ getjop.date }}</td>
+            <td class="text-center">{{ getjop.name_employer }}</td>
+            <td class="text-lg-center">
+                <a href="{% url 'getjopUpdate' getjop.gid %}" class="btn btn-warning text-white">แก้ไข</a>
+                <a href="{% url 'getjopDelete' getjop.gid %}" class="btn btn-danger">ลบ</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </table>
+
+
+
+    <br><br><br>
+{% endblock %}

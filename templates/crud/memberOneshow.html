@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <p>
+    <h1 class="text-center text-dark bg-white">ดูเพิ่มเติมข้อมูลช่าง</h1>
+     <h2 class="text-center text-dark bg-white">ดูเพิ่มเติมข้อมูลของ : {{ member.name }}{{ member.mode }}</h2>
+        <p>
+            <center>
+            <img src= {% static member.picture%} width="400px" height="100px" class="img img-thumbnail">
+            </center>
+    <br>
+           <table class="table">
+        <tr class="bg-white text-primary text-center">
+            <tr>
+            <th class="col col-2">รหัสช่าง :</th><td class="text-rigth">{{ member.mid }}</td>
+               <th class="col col-2">ชื่อ :</th><td class="text-rigth">{{ member.name }}</td>
+           </tr>
+               <tr>
+                   <th class="col col-1">วัน/เดือน/ปี :</th>  <td class="text-rigth">{{ member.birthdate }}</td>
+            <th class="col col-2">ที่อยู่ :</th>   <td class="text-rigth">{{ member.address }}</td>
+               </tr>
+               <tr>
+                   <th class="col col-1">เบอร์โทร:</th>    <td class="text-rigth">{{ member.tel }}</td>
+            <th class="col col-1">รหัสผ่าน :</th>   <td class="text-rigth">{{ member.password }}</td>
+               </tr>
+
+    </table>
+    <a onclick="history.back();" class="btn btn-warning text-white">กลับ</a>
+{% endblock %}

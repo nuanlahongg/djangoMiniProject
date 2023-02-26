@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <p>
+
+<div class="row">
+    <div class="col-sm-4">
+       <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor"
+                             class="bi bi-card-checklist" viewBox="0 0 16 16">
+                            <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
+                            <path d="M7 5.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0zM7 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0z"/>
+                        </svg>
+                        &nbsp;
+                        <span class="ml-2 h1">ข้อมูลการส่งรถคืน</span>
+    </div>
+</div>
+<p>
+    <table class="table table-primary table-striped">
+        <tr class="bg-white text-primary text-center">
+            <th class="col col-1">รหัสการบันทึก</th>
+            <th class="col col-3">อะไหล่ที่ใช้ไป</th>
+            <th class="col col-1">วันที่ </th>
+            <th class="col col-1">รายละเอียดการซ่อม </th>
+            <th class="col col-2">สถานะ </th>
+             <th class="col col-2">จัดการข้อมูล</th>
+        </tr>
+
+
+    {% for savejob in savejob %}
+        <tr>
+            <td class="text-center">{{ savejob.sid }}</td>
+            <td class="text-center">{{ savejob.spare_part.name }}</td>
+            <td class="text-center">{{ savejob.date }}</td>
+            <td class="text-center">{{ savejob.details }}</td>
+            <td class="text-center">
+                {% if savejob.status == '1' %}
+                    <button class="btn btn-sm  btn-warning disabled"><i class="fa-regular fa-hourglass-half"></i>
+                        {{ savejob.getStatus }}</button>
+                {% elif savejob.status == '2' %}
+                    <button class="btn btn-sm  btn-success disabled"><i class="fa-regular fa-hourglass-half"></i>
+                        {{ savejob.getStatus }}</button>
+
+                 {% endif %}
+            </td>
+            <td  class="text-center" >
+                <a href="{% url 'sandConfirm' savejob.sid %}" class="btn  btn-success"
+                   onclick="return confirm('ท่านยืนยันการส่งคืน?')">
+                    <i class="fa-solid fa-check"></i> ยืนยันการส่งคืน </a>
+            </td>
+        </tr>
+    {% endfor %}
+    </table>
+
+
+
+    <br><br><br>
+{% endblock %}

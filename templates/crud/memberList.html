@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <p>
+
+<div class="row">
+    <div class="col-sm-8">
+          <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor"
+                             class="bi bi-people" viewBox="0 0 16 16">
+                            <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8Zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022ZM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816ZM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0Zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z"/>
+                        </svg>
+        <span class="h1">ข้อมูลช่าง</span>
+    </div>
+    <div class="col-sm-4" align="right">
+        <a href="{% url 'memberNew' %}" class="btn  btn-success "><i class="fa fa-plus"></i> เพิ่มข้อมูลช่าง </a>
+
+        <a href="{% url 'pdfmemberReport' %}" class="btn  btn-danger "><i class="fa fa-plus"></i><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-filetype-pdf" viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+                  d="M14 4.5V14a2 2 0 0 1-2 2h-1v-1h1a1 1 0 0 0 1-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5L14 4.5ZM1.6 11.85H0v3.999h.791v-1.342h.803c.287 0 .531-.057.732-.173.203-.117.358-.275.463-.474a1.42 1.42 0 0 0 .161-.677c0-.25-.053-.476-.158-.677a1.176 1.176 0 0 0-.46-.477c-.2-.12-.443-.179-.732-.179Zm.545 1.333a.795.795 0 0 1-.085.38.574.574 0 0 1-.238.241.794.794 0 0 1-.375.082H.788V12.48h.66c.218 0 .389.06.512.181.123.122.185.296.185.522Zm1.217-1.333v3.999h1.46c.401 0 .734-.08.998-.237a1.45 1.45 0 0 0 .595-.689c.13-.3.196-.662.196-1.084 0-.42-.065-.778-.196-1.075a1.426 1.426 0 0 0-.589-.68c-.264-.156-.599-.234-1.005-.234H3.362Zm.791.645h.563c.248 0 .45.05.609.152a.89.89 0 0 1 .354.454c.079.201.118.452.118.753a2.3 2.3 0 0 1-.068.592 1.14 1.14 0 0 1-.196.422.8.8 0 0 1-.334.252 1.298 1.298 0 0 1-.483.082h-.563v-2.707Zm3.743 1.763v1.591h-.79V11.85h2.548v.653H7.896v1.117h1.606v.638H7.896Z"/>
+</svg> Print </a>
+
+
+    </div>
+</div>
+<p>
+    <table class="table table-primary table-striped">
+        <tr class="bg-white text-primary text-center">
+            <th class="col col-1">รหัสช่าง </th>
+            <th class="col col-1">ชื่อ </th>
+            <th class="col col-1">วัน/เดือน/ปี </th>
+            <th class="col col-2">ที่อยู่ </th>
+            <th class="col col-1">เบอร์โทร </th>
+            <th class="col col-1">รหัสผ่าน </th>
+            <th class="col col-2">รูป </th>
+            <th class="col col-3">จัดการข้อมูล </th>
+        </tr>
+
+    {% for member in member %}
+        <tr>
+            <td class="text-center">{{ member.mid }}</td>
+            <td class="text-center">{{ member.name }}</td>
+            <td class="text-center">{{ member.birthdate }}</td>
+            <td class="text-center">{{ member.address }}</td>
+            <td class="text-center">{{ member.tel }}</td>
+            <td class="text-center">{{ member.password }}</td>
+            <td class="text-center"><img src= {% static member.picture%} width="120px" height="100px" class="img img-thumbnail"></td>
+            <td class="text-lg-center">
+                <a href="{% url 'memberUpdate' member.mid %}" class="btn btn-warning text-white">แก้ไข</a>
+                <a href="{% url 'memberDelete' member.mid %}" class="btn btn-danger">ลบ</a>
+                <a href="{% url 'memberOneshow' member.mid %}" class="btn btn-primary">เพิ่มเติม</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </table>
+
+
+
+    <br><br><br>
+{% endblock %}

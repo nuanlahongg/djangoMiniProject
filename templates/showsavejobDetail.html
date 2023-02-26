@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <p>
+
+<div class="row">
+    <div class="col-sm-4">
+        <h1>รายละเอียดการทำงาน</h1>
+    </div>
+    <div class="col-sm-8" align="right">
+        <a href="{% url 'getjopNew' %}" class="btn  btn-success "><i class="fa fa-plus"></i> เพิ่มข้อมูลการรับงาน</ม> </a>
+    </div>
+</div>
+<p>
+    <table class="table table-primary table-striped">
+        <tr class="bg-white text-primary text-center">
+             <th class="col col-1">รหัสการหมอบหมายงาน</th>
+             <th class="col col-1">รหัสช่าง</th>
+            <th class="col col-1">ขื่อช่าง</th>
+            <th class="col col-1">รหัสงาน</th>
+            <th class="col col-3">รายละเอียดงาน </th>
+            <th class="col col-1">วันที่ </th>
+        </tr>
+
+    {% for item in savejob.getSavejobDetails%}
+        <tr>
+            <td class="text-center">{{ item.assignment.agid }}</td>
+            <td class="text-center">{{ item.assignment.member.mid }}</td>
+            <td class="text-center">{{ item.assignment.member.name }}</td>
+            <td class="text-center">{{ item.assignment.getjop.gid  }}</td>
+            <td class="text-center">{{ item.assignment.getjop.details }}</td>
+            <td class="text-center">{{ item.assignment.date }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+
+
+
+    <br><br><br>
+{% endblock %}
